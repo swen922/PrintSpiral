@@ -3,7 +3,7 @@ import java.util.LinkedList;
 public class Spiral {
     public static void main(String[] args) {
         Spiral spiral = new Spiral();
-        spiral.printSpiral(7, 15);
+        spiral.printSpiral(11, 12);
     }
 
     public void printSpiral(int height, int width) {
@@ -15,35 +15,35 @@ public class Spiral {
         int leftCounter = 0;
         int rightCounter = width - 1;
 
-        LinkedList<Integer> numbers = new LinkedList<>();
         int capacity = massive.length * massive[0].length;
-        while (capacity > 0) {
-            numbers.addFirst(capacity);
-            capacity--;
-        }
+        int current = 1;
 
-        while (!numbers.isEmpty()) {
-            if (!numbers.isEmpty()) {
+        while (current <= capacity) {
+            if (current <= capacity) {
                 for (int i = leftCounter; i <= rightCounter; i++) {
-                    massive[topCounter][i] = numbers.pollFirst();
+                    massive[topCounter][i] = current;
+                    current++;
                 }
                 topCounter++;
             }
-            if (!numbers.isEmpty()) {
+            if (current <= capacity) {
                 for (int i = topCounter; i <= bottomCounter; i++) {
-                    massive[i][rightCounter] = numbers.pollFirst();
+                    massive[i][rightCounter] = current;
+                    current++;
                 }
                 rightCounter--;
             }
-            if (!numbers.isEmpty()) {
+            if (current <= capacity) {
                 for (int i = rightCounter; i >= leftCounter; i--) {
-                    massive[bottomCounter][i] = numbers.pollFirst();
+                    massive[bottomCounter][i] = current;
+                    current++;
                 }
                 bottomCounter--;
             }
-            if (!numbers.isEmpty()) {
+            if (current <= capacity) {
                 for (int i = bottomCounter; i >= topCounter; i--) {
-                    massive[i][leftCounter] = numbers.pollFirst();
+                    massive[i][leftCounter] = current;
+                    current++;
                 }
                 leftCounter++;
             }
